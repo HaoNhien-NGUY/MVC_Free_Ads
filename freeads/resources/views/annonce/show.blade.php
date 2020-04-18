@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-12">
+        <div class="col-12 mb-5">
             <h1>Title : {{$annonce->title}}</h1>
             <h2>Description : {{$annonce->description}}</h2>
             <h5>Price : {{$annonce->price}} euros</h5>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Annonce;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AnnonceController extends Controller
 {
@@ -44,6 +45,13 @@ class AnnonceController extends Controller
     public function show(Annonce $annonce)
     {
         return view('annonce.show', ['annonce' => $annonce]);
+    }
+
+    public function search()
+    {
+        $search = request('q');
+        $annonces = DB::table('annonces')->where('title', 'LIKE', "%".$search."%")->get();
+        return view('annonce.search', ['annonces' => $annonces, 'search' => $search]);
     }
 
     public function edit(Annonce $annonce)
