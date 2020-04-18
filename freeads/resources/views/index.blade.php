@@ -8,9 +8,9 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-4">
-                <h1><a href="/annonce">Show all annonces</a></h1>
+                <h1 class="text-center"><a href="/annonce">Show all annonces</a></h1>
             </div>
         </div>
     </div>

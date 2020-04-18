@@ -3,10 +3,15 @@
 @section('content')
 
 <div class="container">
-    <div class="row mb-5">
+    <div class="row mb-2">
         <div class="col-4">
             <h3>Email : {{ $user->email }}</h3>
             <h3>Name : {{ $user->name }}</h3>
+        </div>
+    </div>
+    @if(Auth::user()->id == $user->id)
+    <div class="row mb-5">
+        <div class="col-4">
             <form method="POST" action="/user/{{ Auth::user()->id }}">
                 @csrf
                 @method('DELETE')
@@ -21,8 +26,11 @@
         <div class="col-4">
             <a href="/annonce/create">Create annonce</a>
         </div>
+    </div>
+    @endif
+    <div class="row mt-4">
         <div class="col-4">
-            <a href="/user/{{ $user->id }}/annonces">My annonces</a>
+            <h1><a href="/user/{{ $user->id }}/annonces">Annonces</a></h1>
         </div>
     </div>
 </div>
