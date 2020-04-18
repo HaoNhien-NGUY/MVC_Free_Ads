@@ -11,7 +11,8 @@
     <div class="row pt-5">
         @foreach($user->annonces as $annonce)
         <div class="col-4 pb-4">
-            <h4>{{ $annonce->title }}</h4>
+            <h4 class="mb-0">{{ $annonce->title }}</h4>
+            <p class="text-danger">{{ $annonce->price }} euros</p>
             <a href="/annonce/{{ $annonce->id }}">
                 <img src="/storage/{{ $annonce->image }}" class="w-100">
             </a>
