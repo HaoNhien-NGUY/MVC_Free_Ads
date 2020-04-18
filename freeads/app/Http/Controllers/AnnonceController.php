@@ -69,12 +69,17 @@ class AnnonceController extends Controller
             'title' => 'required',
             'description' => 'required',
             'price' => 'required|integer',
-            'image' => 'required|image'
+            'image' => 'image'
         ]);
-        $imgPath = request('image')->store('uploads', 'public');
 
-        $annonce->images()->create(['image' => $imgPath]);
-        $annonce->update(array_merge($data, ['image' => $imgPath]));
+        if(request('image')) {
+            $imgPath = request('image')->store('uploads', 'public');
+            $annonce->images()->create(['image' => $imgPath]);
+            $annonce->update(array_merge($data, ['image' => $imgPath]));
+        } else {
+            $annonce->update($data);
+        }
+
 
         return redirect('/annonce/'.$annonce->id);
     }
