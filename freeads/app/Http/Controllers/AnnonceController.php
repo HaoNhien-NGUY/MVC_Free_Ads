@@ -35,7 +35,8 @@ class AnnonceController extends Controller
 
         $imgPath = request('image')->store('uploads', 'public');
 
-        auth()->user()->annonces()->create(array_merge($data, ['image' => $imgPath]));
+        $annonce = auth()->user()->annonces()->create(array_merge($data, ['image' => $imgPath]));
+        $annonce->images()->create(['image' => $imgPath]);
 
         return redirect('/user/'.auth()->user()->id . '/annonces');
     }
