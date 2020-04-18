@@ -40,6 +40,9 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/annonce">Toutes les annonces</a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
@@ -57,7 +60,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/user/{{ Auth::user()->id }}" >
+                                <a class="dropdown-item" href="/user/{{ Auth::user()->id }}">
                                     {{ Auth::user()->name }}
                                 </a>
 

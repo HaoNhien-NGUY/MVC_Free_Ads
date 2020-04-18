@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1>Resulsts for '{{ $search }}' &nbsp; ({{ $annonces->count() }})</h1>
+            <h1>Results for '{{ $search }}' &nbsp; ({{ $count }})</h1>
         </div>
         <div class="col-12">
             <div class="search-container mt-3">
@@ -25,6 +25,9 @@
             </a>
         </div>
         @endforeach
+    </div>
+    <div>
+        {{ $annonces->appends(request()->query())->links() }}
     </div>
 </div>
 

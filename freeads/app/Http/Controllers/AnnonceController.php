@@ -16,8 +16,10 @@ class AnnonceController extends Controller
 
     public function index()
     {
-        $allAnnonces = \App\Annonce::all();
-        return view('annonce.index', ['annonces' => $allAnnonces]);
+        $count = \App\Annonce::all()->count();
+        $annonces = \App\Annonce::latest()->paginate(6);
+
+        return view('annonce.index', ['annonces' => $annonces, 'count' => $count]);
     }
 
     public function create()
@@ -50,8 +52,9 @@ class AnnonceController extends Controller
     public function search()
     {
         $search = request('q');
-        $annonces = DB::table('annonces')->where('title', 'LIKE', "%".$search."%")->get();
-        return view('annonce.search', ['annonces' => $annonces, 'search' => $search]);
+        $count = DB::table('annonces')->where('title', 'LIKE', "%".$search."%")->count();
+        $annonces = DB::table('annonces')->where('title', 'LIKE', "%".$search."%")->latest()->paginate(6);
+        return view('annonce.search', ['annonces' => $annonces, 'search' => $search, 'count' => $count]);
     }
 
     public function edit(Annonce $annonce)
